@@ -26,13 +26,17 @@ public class ContatoArrayAdapter extends ArrayAdapter<Contato> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater =
-                (LayoutInflater) context
-                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.contatorow, parent, false); Contato c = contatos.get(position);
-        TextView tvId = (TextView) rowView.findViewById(R.id.contatoId); tvId.setText(String.valueOf(c.get_id()));
-        TextView tvNome = (TextView) rowView.findViewById(R.id.contatoNome); tvNome.setText(c.getNome());
-        TextView tvTelefone = (TextView) rowView.findViewById(R.id.contatoTelefone); tvTelefone.setText(c.getTelefone());
-        return rowView; }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View rowView = inflater.inflate(R.layout.contatorow, parent, false);
+        Contato c = contatos.get(position);
+
+        TextView tvId = (TextView) rowView.findViewById(R.id.contatoId);
+        tvId.setText(String.valueOf(c.get_id()));
+        TextView tvNome = (TextView) rowView.findViewById(R.id.contatoNome);
+        tvNome.setText(c.getNome());
+        TextView tvTelefone = (TextView) rowView.findViewById(R.id.contatoTelefone);
+        tvTelefone.setText(c.getTelefone());
+        return rowView;
+    }
 
 }

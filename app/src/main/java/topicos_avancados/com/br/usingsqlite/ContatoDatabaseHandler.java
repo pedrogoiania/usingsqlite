@@ -42,7 +42,7 @@ public class ContatoDatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addContato(Contato contato) {
+    public void addContato(Contato contato) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, contato.getNome());
@@ -52,13 +52,16 @@ public class ContatoDatabaseHandler extends SQLiteOpenHelper {
 
     public void apagarContato(Contato contato) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_CONTACTS, KEY_ID + " = ?",
-            new String[] { String.valueOf(contato.get_id()) });
+        db.delete(TABLE_CONTACTS, KEY_ID + " = ?", new String[] {
+                                                                    String.valueOf(contato.get_id())
+                                                                });
         db.close();
     }
 
     public List<Contato> getContatos() {
-        List<Contato> contactList = new ArrayList<Contato>(); String selectQuery = "SELECT * FROM " + TABLE_CONTACTS; SQLiteDatabase db = this.getReadableDatabase();
+        List<Contato> contactList = new ArrayList<Contato>();
+        String selectQuery = "SELECT * FROM " + TABLE_CONTACTS;
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
